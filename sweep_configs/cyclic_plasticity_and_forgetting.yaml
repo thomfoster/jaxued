@@ -1,0 +1,19 @@
+program: jaxued/examples/maze_cyclic.py
+name: cyclic_plasticity_and_forgetting
+method: grid
+metric:
+  goal: minimize
+  name: return/mean
+parameters:
+  n_phases:
+    values: [5,10,50]
+  n_steps_per_phase:
+    values: [1,5,10,50,200]
+  n_levels_per_phase:
+    values: [1,]
+  num_updates:
+    values: [5000,]
+  seed:
+    min: 0
+    max: 5
+  

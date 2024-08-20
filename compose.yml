@@ -1,0 +1,24 @@
+
+version: '3.7'
+services:
+  llm_image:
+    image: thomf_jaxued_image 
+    volumes:
+      - type: bind
+        source: ~/.ssh
+        target: /project/.ssh
+        read_only: true
+      - type: bind
+        source: ./
+        target: /project
+    entrypoint: "/bin/bash"
+    stdin_open: true
+    tty: true
+    privileged: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
